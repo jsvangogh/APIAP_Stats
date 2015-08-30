@@ -65,4 +65,4 @@ JSONs/
 AP_ITEM_DATASET/
 test_frame
 json_test.py
-cufflinks_test.py
+plotly_test.py
