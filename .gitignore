@@ -56,3 +56,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# APIAP_Stats specific
+JSONs/
+AP_ITEM_DATASET/
+test_frame
+json_test.py
