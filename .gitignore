@@ -57,6 +57,9 @@ docs/_build/
 # PyBuilder
 target/
 
+# Spyder
+.spyderworkspace
+
 # APIAP_Stats specific
 JSONs/
 AP_ITEM_DATASET/
