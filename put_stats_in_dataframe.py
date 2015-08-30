@@ -155,7 +155,7 @@ def add_participant_row(
     """
     col_dict = {}
     col_dict['patch'] = patch
-    col_dict['region'] = region
+    col_dict['region'] = REVERSE_REGION_DICT[region]
     col_dict['champ'] = CHAMP_DICT[participant_json['championId']]
     col_dict['duration'] = duration
     
