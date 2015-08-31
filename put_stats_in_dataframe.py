@@ -18,11 +18,12 @@ import os
 KEY = "67097ca5-5400-4b53-86d1-fde4a4b4004a"
 rawpi.set_api_key(KEY)
 
-SAVE_FILENAME = 'mid_ranked_all_stats.csv'
+SAVE_FILENAME = 'stats.csv'
 
 FULL_AP_ITEMS = ['Abyssal Scepter',
                  'Archangel\'s Staff',
                  'Athene\'s Unholy Grail',
+                 'Haunting Guise',
                  'Liandry\'s Torment',
                  'Lich Bane',
                  'Luden\'s Echo',
@@ -155,8 +156,11 @@ def add_participant_row(
     """
     col_dict = {}
     col_dict['patch'] = patch
-    col_dict['region'] = REVERSE_REGION_DICT[region]
+    col_dict['region'] = REGION_DICT[region]
     col_dict['champ'] = CHAMP_DICT[participant_json['championId']]
+    col_dict['lane'] = participant_json['timeline']['lane'].lower()
+    col_dict['role'] = participant_json['timeline']['role'].lower()
+    col_dict['rank'] = participant_json['highestAchievedSeasonTier'].lower()
     col_dict['duration'] = duration
     
     add_end_game_items(participant_json['stats'], col_dict)
@@ -182,9 +186,8 @@ def add_match_rows(match_json, patch, region, row_list):
     item_purchases_dict = get_item_purchases(match_json['timeline'])
     
     for p_json in match_json['participants']:
-        if p_json['timeline']['lane'] == 'MIDDLE':
-            add_participant_row(
-                p_json, patch, region, duration, item_purchases_dict, row_list)
+        add_participant_row(
+            p_json, patch, region, duration, item_purchases_dict, row_list)
 
 
 #%% Put Stats for Each Match in DataFrame
