@@ -5,9 +5,9 @@ Created on Wed Aug 26 20:11:37 2015
 @author: Jacob van Gogh
 
 This script is used to gather end-of-game stats for matches and place them in
-a DataFrame, which is saved as a csv. The stats gathered are those in the
-COLUMNS constant as well as counts of "full AP items", outlined in the CONSTANT
-list of the same name.
+a DataFrame, which is saved as a csv. It gathers the number of FULL_AP_ITEMS
+(see util) each champ has purchased as well as:
+kills, deaths, assists, lane, role, winner, match duration, region, and patch.
 """
 
 import json
@@ -42,9 +42,6 @@ REGIONS = ['NA', 'EUW', 'EUNE', 'KR']
 REGION_DICT = {'NA': 1, 'EUW': 2, 'EUNE': 3, 'KR': 4}
 REVERSE_REGION_DICT = {1: 'NA', 2: 'EUW', 3: 'EUNE', 4: 'KR'}
 PATCHES = [5.11, 5.14]
-                 
-COLUMNS = ['patch', 'region', 'champ', 'winner', 
-           'kills', 'deaths', 'assists', 'game time', 'rank', 'num full items']
 
 
 # Create dictionaries from codes to names and vice-versa for items and champs.
