@@ -9,6 +9,7 @@ import plotly.plotly as py
 import pandas as pd
 from plotly import tools
 from plotly.graph_objs import *
+import util
 
 
 # Define Methods for Easy Figure-Creating 
@@ -163,25 +164,9 @@ for num in range(1, 6):
     )
             
 # Graphs Showing the Percentage of #-item Builds That Contain Each Item
-FULL_AP_ITEMS = ['Abyssal Scepter',
-                 'Archangel\'s Staff',
-                 'Athene\'s Unholy Grail',
-                 'Haunting Guise',
-                 'Liandry\'s Torment',
-                 'Lich Bane',
-                 'Luden\'s Echo',
-                 'Mejai\'s Soulstealer',
-                 'Morellonomicon',
-                 'Nashor\'s Tooth',
-                 'Rabadon\'s Deathcap',
-                 'Rod of Ages',
-                 'Rylai\'s Crystal Scepter',
-                 'Seraph\'s Embrace',
-                 'Void Staff',
-                 'Will of the Ancients',
-                 'Zhonya\'s Hourglass']
+FULL_AP_ITEMS = util.FULL_AP_ITEMS
 
-PATCHES = [5.11, 5.14]
+PATCHES = util.PATCHES
 
 
 for i in range(2, 6):

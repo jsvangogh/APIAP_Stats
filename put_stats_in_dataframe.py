@@ -14,34 +14,19 @@ import json
 import pandas as pd
 import rawpi
 import os
+import util
 
 KEY = "67097ca5-5400-4b53-86d1-fde4a4b4004a"
 rawpi.set_api_key(KEY)
 
 SAVE_FILENAME = 'stats.csv'
 
-FULL_AP_ITEMS = ['Abyssal Scepter',
-                 'Archangel\'s Staff',
-                 'Athene\'s Unholy Grail',
-                 'Haunting Guise',
-                 'Liandry\'s Torment',
-                 'Lich Bane',
-                 'Luden\'s Echo',
-                 'Mejai\'s Soulstealer',
-                 'Morellonomicon',
-                 'Nashor\'s Tooth',
-                 'Rabadon\'s Deathcap',
-                 'Rod of Ages',
-                 'Rylai\'s Crystal Scepter',
-                 'Seraph\'s Embrace',
-                 'Void Staff',
-                 'Will of the Ancients',
-                 'Zhonya\'s Hourglass']
+FULL_AP_ITEMS = util.FULL_AP_ITEMS
                  
-REGIONS = ['NA', 'EUW', 'EUNE', 'KR']
-REGION_DICT = {'NA': 1, 'EUW': 2, 'EUNE': 3, 'KR': 4}
-REVERSE_REGION_DICT = {1: 'NA', 2: 'EUW', 3: 'EUNE', 4: 'KR'}
-PATCHES = [5.11, 5.14]
+REGIONS = util.REGIONS_SHORT
+REGION_DICT = util.REGION_DICT
+REVERSE_REGION_DICT = util.REVERSE_REGION_DICT
+PATCHES = util.PATCHES
 
 
 # Create dictionaries from codes to names and vice-versa for items and champs.

@@ -10,14 +10,15 @@ Created on Wed Aug 19 12:51:57 2015
 import json
 import pandas as pd
 import rawpi
+import util
 
 TOP_FOLDER = 'AP_ITEM_DATASET'
-PATCHES = ['5.11', '5.14']
-QUEUE_DICT = {'NORMAL_5X5': 'normal', 'RANKED_SOLO': 'ranked'}
+PATCHES = [str(p) for p in util.PATCHES]
+QUEUE_DICT = util.QUEUE_DICT
 
-REGIONS = ['NA', 'EUW', 'EUNE', 'KR', 'BR', 'LAN', 'LAS', 'OCE', 'RU', 'TR']
-REGION_DICT = {'NA':1, 'EUW':2, 'EUNE':3, 'KR':4, 'BR':5, 'LAN':6, 'LAS':7, 'OCE':8, 'RU':9, 'TR':10}
-REVERSE_DICT = {1:'NA', 2:'EUW', 3:'EUNE', 4:'KR', 5:'BR', 6:'LAN', 7:'LAS', 8:'OCE', 9:'RU', 10:'TR'}
+REGIONS = util.REGIONS
+REGION_DICT = util.REGION_DICT
+REVERSE_DICT = util.REVERSE_REGION_DICT
 
 ALL_SAVE_FILENAME = 'all_matches.csv'
 FILTERED_SAVE_FILENAME = 'filtered_matches.csv'
