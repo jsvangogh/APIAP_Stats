@@ -43,9 +43,8 @@ def make_data_tuple_value_counts(frame, value_col, normalize=False,
     return (label, value)
     
 
-def make_bar_value_counts(
-        frame, value_col, split_col, normalize=False, by_group=True,
-        filename='bar graph', layout=Layout(barmode='stack')):
+def make_bar_value_counts( frame, value_col, split_col, normalize=False, 
+        by_group=True, filename='bar graph', layout=Layout(barmode='stack')):
     """
     Makes a bar graph with grouped data from a DataFrame using a column's
     value counts
@@ -65,10 +64,11 @@ def make_bar_value_counts(
     
     traces = []
     for group in sorted(groups):
-        stack_frame = frame[frame[split_col] == group]
+        split_frame = frame[frame[split_col] == group]
         
-        (x, y) = make_label_value_tuple(frame=stack_frame, value_col=value_col,
-            normalize=normalize, by_group=by_group, total=total)        
+        (x, y) = make_data_tuple_value_counts(frame=split_frame, 
+            value_col=value_col, normalize=normalize, 
+            by_group=by_group, total=total)        
         
         name = str(group)
             
@@ -76,7 +76,33 @@ def make_bar_value_counts(
     figure = Figure(data=traces, layout=layout)
     
     return py.plot(figure, filename=(filename))
+    
 
+def make_data_tuple_sums(frame, value_col, col_list, normalize=False,
+                         by_group=True, total=1):
+    x = col_list
+    if normalize:
+        if by_group:
+            total = len(frame)
+        y = [frame[l].sum()/total*100 for l in col_list]
+    else:
+        y = [frame[l].sum() for l in col_list]
+        
+    return (x, y)
+
+
+def make_bar_sums(frame, value_col, split_col, normalize=False, by_group=True,
+        col_list, filename='bar graph', layout=Layout(barmode='stack')):
+    groups = list(pd.Series(frame[split_col].ravel()).unique())
+    total=len(frame)
+    
+    traces = []
+    for group in sorted(groups):
+        split_frame = frame[frame[split_col] == group]
+        
+        (x, y) = make_bar_sums(split_frame, value_col, col_list,
+            normalize, by_group, total)
+        traces.append(Bar(x=x, y=y, name=str(patch)))
 
 # make figures
 
