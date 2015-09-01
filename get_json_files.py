@@ -31,7 +31,7 @@ def save_jsons(data_frame, region, patch):
     """
     Given a DataFrame with a column, 'match id', obtains the json for each
     match ID and saves it in the appropriate file.
-    
+
     Keyword arguments:
     data_frame -- DataFrame containing match IDs in 'match id' column
     region -- region matches were played in
@@ -81,7 +81,8 @@ def save_jsons(data_frame, region, patch):
         # update the count, save the json file, and wait 1.2 seconds to avoid
         # making too many requests
         count += 1
-        filename = 'JSONs/{0}/{1}/{2}.json'.format(region, patch, str(match_id))
+        filename = 'JSONs/{0}/{1}/{2}.json'.format(region,
+                                                   patch, str(match_id))
         with open(filename, 'w') as outfile:
             json.dump(match.json(), outfile)
         if count % 100 == 0:
@@ -89,7 +90,7 @@ def save_jsons(data_frame, region, patch):
         sleep(1.2)
 
 
-#Save JSONs for Matches of Big 4 Regions' Ranked Matches
+# Save JSONs for Matches of Big 4 Regions' Ranked Matches
 
 
 REGION_DICT = {'NA': 1, 'EUW': 2, 'EUNE': 3, 'KR': 4}
