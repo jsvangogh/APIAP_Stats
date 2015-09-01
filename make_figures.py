@@ -75,7 +75,7 @@ def make_bar_value_counts( frame, value_col, split_col, normalize=False,
         traces.append(Bar(x=x, y=y, name=name))
     figure = Figure(data=traces, layout=layout)
     
-    #return py.plot(figure, filename=(filename))
+    return py.plot(figure, filename=(filename))
     
 
 def make_data_tuple_sums(frame, col_list, normalize=False,
@@ -100,9 +100,9 @@ def make_bar_sums(frame, col_list, split_col, normalize=False, by_group=True,
     for group in sorted(groups):
         split_frame = frame[frame[split_col] == group]
         
-        (x, y) = make_bar_sums(split_frame, col_list,
-            normalize, by_group, total)
-        traces.append(Bar(x=x, y=y, name=str(patch)))
+        (x, y) = make_data_tuple_sums(frame=split_frame, col_list=col_list,
+            normalize=normalize, by_group=by_group, total=total)
+        traces.append(Bar(x=x, y=y, name=str(group)))
     
     figure = Figure(data=traces, layout=layout)
     return py.plot(figure, filename=filename)
@@ -159,8 +159,8 @@ FULL_AP_ITEMS = ['Abyssal Scepter',
 
 PATCHES = [5.11, 5.14]
 
-"""
-for i in range(2, 7):
+
+for i in range(2, 6):
     i_frame = stats[stats['num AP items'] == i]
     
     plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In'.format(i)
@@ -168,7 +168,7 @@ for i in range(2, 7):
       yaxis=YAxis(title='Percentage of Builds Item is Present In'),
       title=plot_title)
     make_bar_sums(frame=i_frame, col_list=FULL_AP_ITEMS, split_col='patch',
-                  filename=plot_title, layout=layout)
+                  normalize=True, filename=plot_title, layout=layout)
     
     for patch in PATCHES:
         p_frame = i_frame[i_frame['patch'] == patch]
@@ -178,38 +178,13 @@ for i in range(2, 7):
             yaxis=YAxis(title='Percentage of Builds Item is Present In'),
             title=lane_plot_title)
         make_bar_sums(frame=p_frame, col_list=FULL_AP_ITEMS, split_col='lane',
-                  filename=plot_title, layout=layout)
-"""
-              
-for i in range(2,7):
-    traces=[]
-    i_frame = stats[(stats['num AP items'] == i)]
-    
-    for patch in [5.11, 5.14]:
-        f = i_frame[i_frame['patch'] == patch]
-        total = len(f)
-        x = FULL_AP_ITEMS
-        y = [f[l].sum()/total*100 for l in x]
-        traces.append(Bar(x=x, y=y, name=str(patch)))
-        
-        # Make Graphs that Separate by Lane
-        lane_plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In By Lane, Patch {1}'.format(i, patch)
-        lane_traces = []
-        for lane in ['bottom', 'jungle', 'middle', 'top']:
-            lane_f = f[f['lane'] == lane]
-            lane_y = [lane_f[l].sum()/total*100 for l in x]
-            lane_traces.append(Bar(x=x, y=lane_y, name=lane))
-        lane_layout=Layout(barmode='stack', 
+                  normalize=True, by_group=False, filename=lane_plot_title, 
+                  layout=lane_layout)
+                  
+        rank_plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In By Rank, Patch {1}'.format(i, patch)
+        rank_layout=Layout(barmode='group', 
             yaxis=YAxis(title='Percentage of Builds Item is Present In'),
-            title=lane_plot_title)
-        lane_figure = Figure(data=lane_traces, layout=lane_layout)
-        py.plot(lane_figure, filename=lane_plot_title)
-    
-    plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In'.format(i)
-    layout=Layout(barmode='group', 
-      yaxis=YAxis(title='Percentage of Builds Item is Present In'),
-      title=plot_title)
-        
-    figure = Figure(data=traces, layout=layout)
-    
-    py.plot(figure, filename=(plot_title))
+            title=rank_plot_title)
+        make_bar_sums(frame=p_frame, col_list=FULL_AP_ITEMS, split_col='rank',
+                  normalize=True, by_group=True, filename=rank_plot_title, 
+                  layout=lane_layout)
