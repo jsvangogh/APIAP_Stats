@@ -187,4 +187,4 @@ for i in range(2, 6):
             title=rank_plot_title)
         make_bar_sums(frame=p_frame, col_list=FULL_AP_ITEMS, split_col='rank',
                   normalize=True, by_group=True, filename=rank_plot_title, 
-                  layout=lane_layout)
+                  layout=rank_layout)
