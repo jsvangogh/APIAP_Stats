@@ -25,6 +25,8 @@ We performed this analysis in Python by using a sequence of scripts. Our results
 
 (Note: we make use of the non-standard/public libraries; Pandas, Plotly, and rawpi)
 
-Observations:
+##Main Observations:
+###Affect On First and Second Buys
 
-![alt tag](http://i.imgur.com/5dTTUjv.png)
+![alt tag](http://i.imgur.com/DT3K8j6.png)
+![alt tag](http://i.imgur.com/OIZmy8T.png)
