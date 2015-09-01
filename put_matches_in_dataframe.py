@@ -28,7 +28,7 @@ RATE_LIMIT_RESPONSE = 429
 
 COLUMNS = ['match id', 'patch', 'queue', 'region']
 
-KEY = '67097ca5-5400-4b53-86d1-fde4a4b4004a'
+KEY = 'PUT RIOT API KEY HERE'
 rawpi.set_api_key(KEY)
 
 #%% Define DataFrame Creation Method

@@ -16,7 +16,7 @@ import rawpi
 import os
 import util
 
-KEY = "67097ca5-5400-4b53-86d1-fde4a4b4004a"
+KEY = "PUT RIOT API KEY HERE"
 rawpi.set_api_key(KEY)
 
 SAVE_FILENAME = 'stats.csv'

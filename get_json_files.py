@@ -19,7 +19,7 @@ import os
 
 GOOD_RESPONSE = 200
 RATE_LIMIT_RESPONSE = 429
-KEY = '67097ca5-5400-4b53-86d1-fde4a4b4004a'
+KEY = 'PUT RIOT API KEY HERE'
 
 rawpi.set_api_key(KEY)
 
