@@ -1,7 +1,7 @@
-# APIAP_Stats
+#An Analysis of AP Build Changes Between 5.11 and 5.14
 
 ##Our Objective:
-We analyzed the effects of the AP item changes on players builds. These graphs vizualize the different build paths used between patch 5.11 and 5.14. We looked to find out whether the item changes achieved the goal of increased build diversity.
+Our goal was to analyze the effects of the AP item changes on players builds. We visualized the different build paths used between patch 5.11 and 5.14 on interactive figures. We looked to find out whether the item changes achieved the goal of increased build diversity.
 
 
 ##Our Analysis:
@@ -23,7 +23,13 @@ We performed this analysis in Python by using a sequence of scripts. Our results
 3. put\_stats\_in\_dataframe reads in each match json and stores stats such as item build and kills in a CSV
 4. make_figures takes the stats we stored in the CSV and makes interactive figures that can be accessed via browser
 
-(Note: we make use of the non-standard/public libraries; Pandas, Plotly, and rawpi)
+Note: we make use of the non-standard/public libraries; Pandas, Plotly, and lolapi
+
+http://pandas.pydata.org
+
+https://plot.ly
+
+https://github.com/Kruptein/lolapi
 
 ##Main Observations:
 ###Effect On First and Second Buys
