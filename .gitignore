@@ -68,4 +68,4 @@ json_test.py
 plotly_test.py
 
 # CSVs
-*.csv
+#*.csv
