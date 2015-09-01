@@ -80,6 +80,18 @@ def make_bar_value_counts( frame, value_col, split_col, normalize=False,
 
 def make_data_tuple_sums(frame, col_list, normalize=False,
                          by_group=True, total=1):
+    """
+    Given a frame, makes a tuple of labels to values a list of columns' sums.
+    Can group small representations into an 'other' group and normalize 
+    values on a total argument.
+    
+    Keyword arguments:
+    frame -- the DataFrame containing values
+    col_list -- list of columns to sum to get data
+    normalize -- whether to normalize values to sum to 100, Default - True
+    by_group -- when normalizing, should each group sum to 100, Default - True
+    total -- total size of data set, used for normalizing
+    """
     x = col_list
     if normalize:
         if by_group:
@@ -93,6 +105,18 @@ def make_data_tuple_sums(frame, col_list, normalize=False,
 
 def make_bar_sums(frame, col_list, split_col, normalize=False, by_group=True,
         filename='bar graph', layout=Layout(barmode='stack')):
+    """
+    Makes a bar graph with grouped data from a DataFrame using column sums
+    
+    Keyword arguments:
+    frame -- the DataFrame containing values
+    col_list -- list of columns to sum to get data
+    split_col -- column name that groups are split on
+    normalize -- whether to normalize values to sum to 1, Default - True
+    by_group -- when normalizing, should each group sum to 100, Default - True
+    filename -- name of plotly file
+    layout -- layout of figure, Default - stacked bar graph
+    """
     groups = list(pd.Series(frame[split_col].ravel()).unique())
     total=len(frame)
     
@@ -123,7 +147,7 @@ for patch in [5.11, 5.14]:
         )
     )
 
-# Graphs for Item Purchases for First, Second, and Third Purchases                     
+# Graphs for Item Purchases for First, Second, etc Purchases                  
 for num in range(1, 6):
     f = stats
     plot_title = 'AP Item #{0} Purchased by Patch'.format(num)
@@ -163,6 +187,7 @@ PATCHES = [5.11, 5.14]
 for i in range(2, 6):
     i_frame = stats[stats['num AP items'] == i]
     
+    # Grouped Bar Graphs to Easily Compare Patches
     plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In'.format(i)
     layout=Layout(barmode='group', 
       yaxis=YAxis(title='Percentage of Builds Item is Present In'),
@@ -173,6 +198,7 @@ for i in range(2, 6):
     for patch in PATCHES:
         p_frame = i_frame[i_frame['patch'] == patch]
         
+        # Stacked Bar Graphs Showing Lane Distribution
         lane_plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In By Lane, Patch {1}'.format(i, patch)
         lane_layout=Layout(barmode='stack', 
             yaxis=YAxis(title='Percentage of Builds Item is Present In'),
@@ -180,7 +206,8 @@ for i in range(2, 6):
         make_bar_sums(frame=p_frame, col_list=FULL_AP_ITEMS, split_col='lane',
                   normalize=True, by_group=False, filename=lane_plot_title, 
                   layout=lane_layout)
-                  
+        
+        # Grouped Bar Graphs to Compare by Rank          
         rank_plot_title = 'Percentage of {0}-AP-Item Builds Each Item Present In By Rank, Patch {1}'.format(i, patch)
         rank_layout=Layout(barmode='group', 
             yaxis=YAxis(title='Percentage of Builds Item is Present In'),
