@@ -1,5 +1,8 @@
 #An Analysis of AP Build Changes Between 5.11 and 5.14
 
+##Summary:
+The AP item changes successfully promoted diversified item builds for mages. Luden's Echo saw the largest decrease in popularity, with the other Needlessly Large Rod items rising to take its place. In particular, the Rylai's Crystal Scepter rework made it a much more appealing item. Overall, late game builds remain relatively similar, though Void Staff is now more often forgone so that another Needlessly Large Rod item can be built. These changes affected mid laners the most, but other lanes saw some diversification as well. Top laners now have more rush items, lessening the purchase of Rod of Ages. Finally, high level players display the best ability to adapt to patches, incorporating strengthened items into their builds most readily.
+
 ##Our Objective:
 Our goal was to analyze the effects of the AP item changes on players builds. We visualized the different build paths used between patch 5.11 and 5.14 on interactive figures. We looked to find out whether the item changes achieved the goal of increased build diversity.
 
@@ -32,6 +35,7 @@ https://plot.ly
 https://github.com/Kruptein/lolapi
 
 ##Main Observations:
+We highlight the observations we found most interesting here. For a collection of every figure we made, see the "Figure" sub-heading at the bottom.
 ###Effect On First and Second Buys
 
 ![alt tag](http://i.imgur.com/DT3K8j6.png)
@@ -68,3 +72,8 @@ Interactive Figure: https://plot.ly/~jsvangogh/536/percentage-of-4-ap-item-build
 (Interactive figures highly recommended for these plots. Also note, the number of late-game challenger and master games was very small, so their statistics should not be analyzed too heavily. We recommend comparing diamond to bronze and silver.)
 
 Void staff saw less presence in builds for all ranks, but the decrease was sharpest in higher ranks (12% decrease in diamond. 4% decrease in bronze). This, however, is due mainly to the low percentage of builds that made use of it in lower ranks even before the item changes. The opposite effect is seen in Rylai's Crystal Scepter. Lower ranked players purchased it more often in 5.11, but higher ranked players favor it more in 5.14. These discrepancies seem to highlight a higher-ranked player's ability to identify the strongest items and willingness to alter their builds.
+
+###Figures:
+All figures can be found in this imgur album (links to interactive figures provided in image comments): 
+
+http://imgur.com/a/Ukw4D
