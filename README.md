@@ -29,4 +29,6 @@ We performed this analysis in Python by using a sequence of scripts. Our results
 ###Affect On First and Second Buys
 
 ![alt tag](http://i.imgur.com/DT3K8j6.png)
+The three most popular first buys in 5.11, though still dominant, are less popular in 5.14. Zhonya's, Haunting Guise, Lich Bane, and Nashor's Tooth have all risen to take their place. (Azir changes and Diana's increased prominence most likely are the factor behind the Nashor's Tooth rise however.)
+
 ![alt tag](http://i.imgur.com/OIZmy8T.png)
