@@ -102,8 +102,7 @@ for num in range(1, 6):
     make_bar_value_counts(
         frame=f[f[value_col] != '0'], 
         filename=plot_title,
-        value_col=value_col, split_col='patch', 
-        normalize=True, other=False,
+        value_col=value_col, split_col='patch', normalize=True,
         layout=Layout(barmode='group', 
                       yaxis=YAxis(title='Buy Percentage'),
                       title=plot_title
